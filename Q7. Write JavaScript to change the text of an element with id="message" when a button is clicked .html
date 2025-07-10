@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic HTML5 Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        header h1 {
+            color: #2e8b57;
+            text-align: center;
+            border-bottom: 2px solid #2e8b57;
+            padding-bottom: 10px;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 4px;
+        }
+        
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #2e8b57;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #3cb371;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h2 {
+            color: #2e8b57;
+            margin-top: 0;
+        }
+        
+        .card p {
+            color: #666;
+        }
+      
+        .calculator {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .calculator input {
+            width: 100px;
+            margin: 0 10px 10px 0;
+        }
+        
+        .calculator button {
+            background-color: #2e8b57;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #sumResult {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #2e8b57;
+        }
+        #message {
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #e8f5e9;
+            border-left: 4px solid #2e8b57;
+            font-size: 1.1em;
+        }
+        
+        #changeMessageBtn {
+            background-color: #2e8b57;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        #changeMessageBtn:hover {
+            background-color: #3cb371;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+    
+    <main>
+        <section class="card">
+            <h2>About This Page</h2>
+            <p>This is a card component that demonstrates the new styling. Cards are great for highlighting important content or creating distinct sections.</p>
+        </section>
+        
+        <section>
+            <p>This is a basic HTML5 page demonstrating common elements including text content, an image, and a simple form.</p>
+            
+            <img src="https://wpengine.com/wp-content/uploads/2021/05/optimize-images-1024x681.jpg" alt="Placeholder image">
+        </section>
+        
+        <section class="card">
+            <h2>Featured Content</h2>
+            <p>Notice how this content stands out in its own card container. The hover effect makes it interactive!</p>
+        </section>
+        
+        <section>
+            <h2>Contact Form</h2>
+            <form action="/submit-form" method="post">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+      
+        <section class="card">
+        <h2>Number Sum Calculator</h2>
+        <div class="calculator">
+            <label for="number1">First Number:</label>
+            <input type="number" id="number1" placeholder="Enter a number">
+            
+            <label for="number2">Second Number:</label>
+            <input type="number" id="number2" placeholder="Enter a number">
+            
+            <button onclick="calculateSum()">Calculate Sum</button>
+            
+            <div id="sumResult"></div>
+        </div>
+        </section>
+        <section class="card">
+        <h2>Message Demo</h2>
+        <div id="message">Click the button below to change this message!</div>
+        <button id="changeMessageBtn">Change Message</button>
+    </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+       
+        window.onload = function() {
+            alert("Welcome to our website! We're glad you're here.");
+        };
+
+        const sumNumbers = (num1, num2) => num1 + num2;
+      
+        function calculateSum() {
+          
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+                    
+            const result = sumNumbers(num1, num2);
+            document.getElementById('sumResult').textContent = `The sum is: ${result}`;
+        }
+
+            document.getElementById('changeMessageBtn').addEventListener('click', function(){
+            const messages = [
+                "You've changed the message!",
+                "JavaScript is working!",
+                "Interactive web pages are fun!",
+                "You clicked the button!",
+                "Welcome to dynamic content!"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message').textContent = randomMessage;
+        });
+        
+    </script>
+</body>
+</html>
