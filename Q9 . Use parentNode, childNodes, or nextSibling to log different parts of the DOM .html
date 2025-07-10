@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Traversal Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #demo-area { border: 2px solid #ddd; padding: 15px; margin-bottom: 20px; }
+    #results { background: #f5f5f5; padding: 15px; border-radius: 5px; }
+    .highlight { background: yellow; }
+  </style>
+</head>
+<body>
+  <h1>DOM Traversal Demo</h1>
+  
+  <div id="demo-area">
+    <div id="parent" class="highlight">
+      <p id="first">First paragraph child</p>
+      <p id="second">Second paragraph child</p>
+      <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="results">
+    <h3>Traversal Results:</h3>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const output = document.getElementById('output');
+    const secondChild = document.getElementById('second');
+    const parent = document.getElementById('parent');
+    const firstChild = document.getElementById('first');
+
+    // 1. parentNode example
+    output.innerHTML += `
+      <p><strong>parentNode of #second:</strong> ${secondChild.parentNode.id} (highlighted above)</p>
+    `;
+
+    // 2. childNodes example
+    output.innerHTML += `<p><strong>childNodes of #parent:</strong></p><ul>`;
+    parent.childNodes.forEach((node, index) => {
+      const content = node.nodeName === '#text' ? 'whitespace/text node' : node.textContent;
+      output.innerHTML += `<li>Node ${index}: ${node.nodeName} (${content.trim() || 'empty'})</li>`;
+    });
+    output.innerHTML += `</ul>`;
+
+    // 3. nextSibling examples
+    output.innerHTML += `
+      <p><strong>nextSibling of #first:</strong> ${firstChild.nextSibling.nodeName} (usually #text for whitespace)</p>
+      <p><strong>nextElementSibling of #first:</strong> ${firstChild.nextElementSibling.id}</p>
+    `;
+
+    
+    function flashElement(element, color = 'yellow') {
+      const original = element.style.backgroundColor;
+      element.style.backgroundColor = color;
+      setTimeout(() => element.style.backgroundColor = original, 1000);
+    }
+
+    
+    document.querySelectorAll('#demo-area *').forEach(el => {
+      el.onclick = function(e) {
+        e.stopPropagation();
+        flashElement(this, '#a8d8ea');
+        
+        output.innerHTML = `
+          <p><strong>Clicked:</strong> ${this.nodeName}${this.id ? `#${this.id}` : ''}</p>
+          <p><strong>parentNode:</strong> ${this.parentNode.nodeName}${this.parentNode.id ? `#${this.parentNode.id}` : ''}</p>
+          <p><strong>childNodes:</strong> ${this.childNodes.length} nodes</p>
+          <p><strong>nextSibling:</strong> ${this.nextSibling?.nodeName || 'none'}</p>
+          <p><strong>nextElementSibling:</strong> ${this.nextElementSibling?.nodeName || 'none'}${this.nextElementSibling?.id ? `#${this.nextElementSibling.id}` : ''}</p>
+        `;
+      };
+    });
+  </script>
+</body>
+</html>
