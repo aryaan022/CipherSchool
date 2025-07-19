@@ -1,0 +1,46 @@
+📌 Steps to Create MongoDB Atlas Cluster:
+1️⃣ Go to: https://www.mongodb.com/cloud/atlas
+
+2️⃣ Sign up / Log in to MongoDB Atlas.
+
+3️⃣ Click Build a Cluster (Select Free Tier).
+
+4️⃣ Choose region (closest to your location) and click Create Cluster.
+
+5️⃣ Once the cluster is created:
+
+Go to Network Access from the left menu.
+
+Click Add IP Address.
+
+Choose My Current IP and click Add IP Address.
+
+6️⃣ Go to Database Access:
+
+Click Add New Database User.
+
+Set username and password (remember them).
+
+Give Read and Write to Any Database access.
+
+Click Add User.
+
+📌 Create Database and Collection:
+7️⃣ Go to Clusters > Click Browse Collections.
+
+8️⃣ Click Add My Own Data:
+
+Database Name: mern-auth
+
+Collection Name: testUsers
+
+9️⃣ Insert a sample document (example):
+
+json
+{
+  "name": "Aryan",
+  "email": "aryan@example.com",
+  "age": 22
+}
+Click Insert Document.
+
