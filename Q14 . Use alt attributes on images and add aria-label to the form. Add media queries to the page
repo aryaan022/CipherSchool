@@ -1,0 +1,62 @@
+import React from 'react';
+
+function App() {
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    sayHello() {
+      return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+  }
+
+  const person = new Person("Aryan", 22);
+
+  const containerStyle = {
+    maxWidth: '600px',
+    margin: '50px auto',
+    padding: '20px',
+    backgroundColor: '#f0f8ff',
+    textAlign: 'center',
+    borderRadius: '10px'
+  };
+
+  const messageStyle = {
+    fontSize: '24px',
+    color: '#333'
+  };
+
+  const responsiveStyle = `
+    @media (max-width: 600px) {
+      .container {
+        width: 90% !important;
+        padding: 15px !important;
+      }
+      .message {
+        font-size: 18px !important;
+      }
+    }
+  `;
+
+  return (
+    <>
+      <style>{responsiveStyle}</style>
+      <div className="container" style={containerStyle}>
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Person placeholder"
+          style={{ width: '150px', borderRadius: '50%' }}
+        />
+        <p className="message" style={messageStyle}>{person.sayHello()}</p>
+        <form aria-label="Contact Form">
+          <input type="text" placeholder="Enter your message" style={{ padding: '8px', margin: '10px 0' }} />
+          <button type="submit" style={{ padding: '10px 20px' }}>Send</button>
+        </form>
+      </div>
+    </>
+  );
+}
+
+export default App;
