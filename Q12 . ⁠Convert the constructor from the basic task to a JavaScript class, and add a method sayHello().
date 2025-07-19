@@ -1,0 +1,24 @@
+import React from 'react';
+
+function App() {
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    sayHello() {
+      return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+  }
+
+  const person = new Person("Aryan", 22);
+
+  return (
+    <div>
+      <p>{person.sayHello()}</p>
+    </div>
+  );
+}
+
+export default App;
