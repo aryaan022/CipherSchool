@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Basic Script</title>
+</head>
+<body>
+
+  <script>
+    // Show greeting using alert
+    alert("Welcome to my website!");
+
+    // Arrow function to return sum of two numbers
+    const sum = (a, b) => a + b;
+
+    // Example usage
+    console.log(sum(10, 5));  // Output: 15
+  </script>
+
+</body>
+</html>
