@@ -1,0 +1,19 @@
+import React from 'react';
+
+function App() {
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  const person = new Person("Aryan", 22);
+
+  return (
+    <div>
+      <p>{person.name}</p>
+      <p>{person.age}</p>
+    </div>
+  );
+}
+
+export default App;
