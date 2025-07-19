@@ -1,1 +1,25 @@
+const express = require('express');
+const cors = require('cors');
 
+const app = express();
+app.use(cors({ origin: 'http://localhost:3000' }));  // Allow React
+app.use(express.json());
+
+const users = [
+  { id: 1, name: 'Aryan' },
+  { id: 2, name: 'Priya' },
+  { id: 3, name: 'Rahul' }
+];
+
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+app.post('/message', (req, res) => {
+  console.log('Message Received:', req.body.message);
+  res.json({ status: 'Message received successfully' });
+});
+
+app.listen(5000, () => {
+  console.log('Server running on http://localhost:5000');
+});
