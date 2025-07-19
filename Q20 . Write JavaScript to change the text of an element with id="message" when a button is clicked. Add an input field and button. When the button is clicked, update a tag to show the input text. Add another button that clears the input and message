@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 8px 16px;
+    }
+    input {
+      padding: 8px;
+      margin: 10px 0;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="message">Original Message</p>
+
+  <input type="text" id="userInput" placeholder="Type something...">
+  <br>
+  <button id="updateBtn">Update Message</button>
+  <button id="clearBtn">Clear</button>
+
+  <script>
+    const message = document.getElementById('message');
+    const input = document.getElementById('userInput');
+    const updateBtn = document.getElementById('updateBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    let clickCount = 0;
+
+    updateBtn.addEventListener('click', () => {
+      const text = input.value.trim();
+      if (text) {
+        message.textContent = text;
+        clickCount++;
+      }
+      if (clickCount >= 5) {
+        updateBtn.disabled = true;
+        updateBtn.textContent = 'Disabled after 5 clicks';
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      message.textContent = 'Original Message';
+    });
+  </script>
+
+</body>
+</html>
